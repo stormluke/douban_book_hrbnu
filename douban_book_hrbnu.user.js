@@ -60,9 +60,13 @@ function changeDouban(html, data) {
                 similar += 1;
             }
         }
-        htmlStr += '<li>有 '+avaliable+' 本可以外借，馆藏共 '+total+' 本';
+        if(total) {
+            htmlStr += '<li>有 '+avaliable+' 本可以外借，馆藏共 '+total+' 本';
+        } else {
+            htmlStr += '<li>没这书啊亲，不过';
+        }
         if(similar) {
-            htmlStr += '<li>还找到 '+similar+' 个相似的<a target="_blank" href="'+url+'?'+dict2QueryStr(data)+'" class="rr">> 去看看</a></li>';
+            htmlStr += '</li><li>还有 '+similar+' 个相似的<a target="_blank" href="'+url+'?'+dict2QueryStr(data)+'" class="rr">> 去看看</a></li>';
         } else {
             htmlStr += '<a  target="_blank" href="'+url+'?'+dict2QueryStr(data)+'" class="rr">> 去看看</a></li>';
         }
